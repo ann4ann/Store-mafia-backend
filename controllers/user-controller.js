@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../models/User";
 
 export const getAllUsers = async (req, res, next) => {
   let users;
