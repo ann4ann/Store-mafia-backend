@@ -3,10 +3,14 @@ import mongoose from "mongoose";
 import productRouter from "./routes/product-routes";
 import uploadRouter from "./routes/upload-route";
 import userRouter from "./routes/user-routes";
+import path from "path";
+import { getDirname } from "./utils";
+const dn = getDirname(import.meta.url);
 
 const app = express();
 mongoose.set("strictQuery", false);
-app.use(express.json());
+app.use(express.json({ extended: true }));
+app.use("/assets/images", express.static(path.join(dn, "images")));
 
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
