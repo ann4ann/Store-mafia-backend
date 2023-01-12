@@ -6,6 +6,7 @@ import userRouter from "./routes/user-routes";
 import path from "path";
 import { getDirname } from "./utils";
 const dn = getDirname(import.meta.url);
+import reviewRouter from "./routes/review-routes";
 
 const app = express();
 mongoose.set("strictQuery", false);
@@ -14,6 +15,7 @@ app.use("/assets/images", express.static(path.join(dn, "images")));
 
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.use("/api/review", reviewRouter);
 app.use("/api", uploadRouter);
 
 mongoose
