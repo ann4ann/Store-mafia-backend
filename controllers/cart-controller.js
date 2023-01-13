@@ -5,12 +5,12 @@ const cartSrvice = new CartSrvice()
 class CartController {
 
     async getByUserId(req, res) {
-        const cart = await cartSrvice.getByUserId(req.query)
+        const cart = await cartSrvice.getByUserId(req.params)
         cart ? res.json(cart) : res.status(404).json({ message: "no found" })
     }
 
     async create(req, res) {
-        const cart = await cartSrvice.create(req.body)
+        const cart = await cartSrvice.create(req.params)
         cart ? res.json(cart) : res.status(404).json({ message: "no found" })
     }
 
