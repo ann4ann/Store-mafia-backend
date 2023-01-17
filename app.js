@@ -1,11 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
-import productRouter from "./routes/product-routes";
-import uploadRouter from "./routes/upload-route";
-import userRouter from "./routes/user-routes";
+import cors from 'cors'
+import bodyParser from 'body-parser'
 import path from "path";
 import { getDirname } from "./utils";
 const dn = getDirname(import.meta.url);
+
+import productRouter from "./routes/product-routes";
+import uploadRouter from "./routes/upload-route";
+import userRouter from "./routes/user-routes";
 import reviewRouter from "./routes/review-routes";
 import cartRouter from "./routes/cart-routes";
 
@@ -13,6 +16,8 @@ const app = express();
 mongoose.set("strictQuery", false);
 app.use(express.json({ extended: true }));
 app.use("/assets/images", express.static(path.join(dn, "images")));
+app.use(cors({ origin: '*' }))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
