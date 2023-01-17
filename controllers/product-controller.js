@@ -10,7 +10,7 @@ export const getAllProducts = async (req, res, next) => {
   if (!products) {
     return res.status(404).json({ message: "No products found" });
   }
-  return res.status(200).json({ products });
+  return res.status(200).json(products);
 };
 
 export const getProductsByCategory = async (req, res, next) => {
@@ -23,7 +23,7 @@ export const getProductsByCategory = async (req, res, next) => {
 if (!products) {
   return res.status(404).json({ message: "No products found" });
 }
-return res.status(200).json({ products });
+return res.status(200).json(products);
 };
 
 export const getProduct = async (req, res, next) => {

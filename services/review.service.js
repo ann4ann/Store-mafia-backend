@@ -6,7 +6,7 @@ class ReviewSrvice {
         try {
             return props.limit
                 ?
-                await Review.find({ productId: props.productId }).limit(20)
+                await Review.find({ productId: props.productId }).limit(props.limit)
                 :
                 await Review.find({ productId: props.productId })
         }
